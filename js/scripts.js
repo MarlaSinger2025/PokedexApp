@@ -4,5 +4,10 @@ let pokemonList = [{name:"Nidoqueen" , height:1.3 , type:["ground", "poison"]},
 
 for (let i = 0; i <pokemonList.length; i++)
     {
- document.write("<p>" + pokemonList[i].name + " (height:" + pokemonList[i].height + ") </p>");
+    if (pokemonList[i].height > 1) 
+        {
+    document.write("<p>" + pokemonList[i].name + " (height:" + pokemonList[i].height + ") - Wow, thats BIG!</p>");
+} else {
+    document.write("<p>" + pokemonList[i].name + " (height:" + pokemonList[i].height + ") </p>");
 }
+    }
