@@ -12,6 +12,8 @@ return {
 
     // adds an item at the end of the array
         add: function(item) {
+            // conditional : only if content is an object it can be added to the List
+            if (typeof item === 'object')
             pokemonList.push(item);
         }
     };
