@@ -10,13 +10,21 @@ return {
         return pokemonList;
     },
 
-    // adds an item at the end of the array
-        add: function(item) {
-            // conditional : only if content is an object it can be added to the List
-            if (typeof item === 'object')
-            pokemonList.push(item);
+    add: function(item) {
+        const requiredKeys = ['name', 'height', 'type'] //defining required keys
+        if (
+            typeof item === 'object' // only if content is an object it can be added to the List
+        && requiredKeys.every(function(key) { //and only if it contains every key that is required
+        return key in item; 
+     // typeof item === 'object' && requiredKeys.every(key => key in item) //using arrow function instead
         }
-    };
+        )) {
+          pokemonList.push(item); // adds the item at the end of the array
+      } else {
+        alert("The data you are trying to add is false or incomplete: Needs to be 'name', 'height', 'type'" );
+      }
+    }
+  };
 })();
 
 console.log(pokemonRepository.getAll()); //prints the whole array in the console WITHOUT the added item?
