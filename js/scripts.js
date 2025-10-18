@@ -3,12 +3,30 @@ let pokemonRepository = (function() { //IIFE
                        {name:"Bulbasaur" , height:0.7 , type:["grass", "poison"]},
                        {name:"Jigglypuff" , height:0.5 , type:["fairy", "normal"]}];
 
+   function addListItem(pokemon){
+      let pokemonList = document.querySelector('.pokemon-list');
+      let listItem = document.createElement('li');
+      let button = document.createElement('button');
+      button.innerText = pokemon.name;
+      button.classList.add('pokemon-button');
+      listItem.appendChild(button);
+      pokemonList.appendChild(listItem);
+      // Everytime one of the pokemons gets clicked it will call the function
+      button.addEventListener('click', function(event){showDetails(pokemon)});
+    }
+    // Logs every pokemon that gets clicked in the function
+    function showDetails(pokemon){
+      console.log(pokemon);
+    }
+
 return {
 
     // returns all objects
     getAll: function() {
         return pokemonList;
     },
+
+    addListItem: addListItem,
 
     add: function(item) {
         const requiredKeys = ['name', 'height', 'type'] //defining required keys
@@ -33,5 +51,5 @@ console.log(pokemonRepository.getAll()); //prints the whole array in the console
 
 //accessing pokemonList with the getAll() function because its hidden inside the pokemonRepository
 pokemonRepository.getAll().forEach(function(pokemon) {
-    document.write("<p>" + pokemon.name + " has a height of " + pokemon.height + " and is a " + pokemon.type + " type </p>");
+  pokemonRepository.addListItem(pokemon);
 });
