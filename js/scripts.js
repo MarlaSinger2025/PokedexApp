@@ -1,36 +1,51 @@
 let pokemonRepository = (function() { //IIFE
-    let pokemonList = [{name:"Nidoqueen" , height:1.3 , type:["ground", "poison"]},
-                       {name:"Bulbasaur" , height:0.7 , type:["grass", "poison"]},
-                       {name:"Jigglypuff" , height:0.5 , type:["fairy", "normal"]}];
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=50';
 
-   function addListItem(pokemon){
-      let pokemonList = document.querySelector('.pokemon-list');
+  function add(item) {
+        const requiredKeys = ['name'] //defining required keys. Adding "detailsUrl" as key later
+        if (
+    // only if content is an object and contains requierd key(s) it can be added to the List
+      typeof item === 'object' && requiredKeys.every(key => key in item) //using arrow function
+        ) {
+          pokemonList.push(item); // adds the item at the end of the array
+      } else {
+        alert("The data you are trying to add is false or incomplete" );
+      }
+    } 
+
+  function getAll() {
+    return pokemonList;
+  }
+   
+    function addListItem(pokemon){
+      let listPokemon = document.querySelector('.pokemon-list');
       let listItem = document.createElement('li');
       let button = document.createElement('button');
       button.innerText = pokemon.name;
       button.classList.add('pokemon-button');
       listItem.appendChild(button);
-      pokemonList.appendChild(listItem);
+      listPokemon.appendChild(listItem);
       // Everytime one of the pokemons gets clicked it will call the function
-      button.addEventListener('click', function(event){showDetails(pokemon)});
+      button.addEventListener('click', function(event){showDetails(pokemon);
+      });
     }
     // Logs every pokemon that gets clicked in the function
-    function showDetails(pokemon){
-      console.log(pokemon);
-    }
+   // function showDetails(pokemon){
+     // console.log(pokemon); }
 
   // Fetches data from the pokemonAPI, adds each pokemon to the pokemonList
   function loadList(){
     return fetch(apiUrl).then(function (response){
       return response.json();
     }).then(function (json) {
-      json.results.forEach(function(item){
+      json.results.forEach(function (listItem){
         let pokemon = {
-          name: item.name,
-          detailsUrl: item.url
+          name: listItem.name,
+          detailsUrl: listItem.url
         };
         add(pokemon);
+        console.log(pokemon);
       });
     }).catch(function (e){
       console.error(e);
@@ -51,42 +66,29 @@ let pokemonRepository = (function() { //IIFE
     });
   }
 
+  function showDetails(item){
+    pokemonRepository.loadDetails(item).then(function() {
+      console.log(item);
+    });
+  }
+
 return {
 
-    // returns all objects
-    getAll: function() {
-        return pokemonList;
-    },
-
+    getAll : getAll,
     addListItem: addListItem,
-
-    add: function(item) {
-        const requiredKeys = ['name', 'height', 'type'] //defining required keys
-        if (
-            typeof item === 'object' // only if content is an object it can be added to the List
-        && requiredKeys.every(function(key) { //and only if it contains every key that is required
-        return key in item; 
-     // typeof item === 'object' && requiredKeys.every(key => key in item) //using arrow function instead
-        }
-        )) {
-          pokemonList.push(item); // adds the item at the end of the array
-      } else {
-        alert("The data you are trying to add is false or incomplete: Needs to be 'name', 'height', 'type'" );
-      }
-    },
-
     loadList : loadList,
-    loadDetails : loadDetails
+    loadDetails : loadDetails,
+    showDetails : showDetails,
   };
 })();
 
-console.log(pokemonRepository.getAll()); //prints the whole array in the console WITHOUT the added item?
-pokemonRepository.add({name: "Rattata", height: 0.3, type: "normal"}); // specifying which item is gonna be added
-console.log(pokemonRepository.getAll()); //prints the whole array in the console WITH the added item
-
 //accessing pokemonList with the getAll() function because its hidden inside the pokemonRepository
-pokemonRepository.loadList().then(function(){
+pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
 });
+
+//pokemonRepository.add({name: "Rattata", height: 0.3, type: "normal"}); 
+//console.log(pokemonRepository.getAll()); //prints the whole array in the console 
+//not sure if i need those lines anymore?
