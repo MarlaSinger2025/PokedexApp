@@ -1,3 +1,7 @@
+body{
+  background-color: #3c5aa6; /* original pokemon logo color */
+}
+
 .pokemon-list{
 list-style-type: none;
 padding-inline-start: 0px;
@@ -7,20 +11,21 @@ grid-column: 1;
 }
 
 .pokemon-button{
-    background-color: #2e8eae;
-    border: 2px solid grey;
+    background-color: #80a4ff;
+    border: none;
     color: white;
     padding: 10px;
     border-radius: 10px;
-    cursor: pointer;
+    cursor: crosshair;
     margin: 5px;
     width: 20%; /* FINDE HERAUS WELCHE GRÖSSE DIE TABELLE HABEN MUSS*/
     min-width: fit-content ;
 }
 
 .pokemon-button:hover {
-    background-color: #0b5b76;
+    background-color: #80a4ff;
     font-weight: bold;
+    border: 3px solid #ffcb05;
 }
 
 #pokedex-container {
@@ -69,5 +74,7 @@ grid-column: 1;
 }
 
 h1 {
+font-family: Helvetica, Arial, sans-serif;
+color: #c7a008; /* original pokemon logo color */
 text-align: center;
 }
