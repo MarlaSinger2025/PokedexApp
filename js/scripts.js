@@ -66,10 +66,66 @@ let pokemonRepository = (function() { //IIFE
     });
   }
 
-  function showDetails(item){
-    pokemonRepository.loadDetails(item).then(function() {
-      console.log(item);
+   function showModal(title, text, img) {
+    let pokedexContainer = document.querySelector('#pokedex-container');
+    pokedexContainer.innerHTML = '';
+    
+    let pokedex = document.createElement('div');
+    pokedex.classList.add('pokedex');
+    
+    let closeButtonElement = document.createElement('button');
+    closeButtonElement.classList.add('pokedex-close');
+    closeButtonElement.innerText = 'X';
+  closeButtonElement.addEventListener('click', hideModal);
+
+    let titleElement = document.createElement('h1');
+    titleElement.innerText = title;
+    
+    let textElement = document.createElement('p');
+    textElement.innerText = text;
+
+   let imageElement = document.createElement('img');
+    imageElement.src = img;
+
+  //  let typeElement = document.createElement('p');
+  //  typeElement.innerText = text;
+  
+
+    pokedex.appendChild(closeButtonElement);
+    pokedex.appendChild(titleElement);
+    pokedex.appendChild(textElement);
+    pokedex.appendChild(imageElement);
+    // pokedex.appendChild(typeElement);
+    pokedexContainer.appendChild(pokedex);
+    
+    pokedexContainer.classList.add('is-visible');
+    
+    pokedexContainer.addEventListener('click', (e) => {
+      let target = e.target;
+      if (target === pokedexContainer ) {
+        hideModal();
+      }
     });
+  }
+  
+  function hideModal(){
+    let pokedexContainer = document.querySelector('#pokedex-container');
+    pokedexContainer.classList.remove('is-visible');
+  }
+  
+  window.addEventListener('keydown', (e) => {
+    let pokedexContainer = document.querySelector('#pokedex-container');
+    if (e.key === 'Escape' && pokedexContainer.classList.contains('is-visible')){
+      hideModal();
+    }
+  });
+  
+  function showDetails(pokemon){
+    document.querySelector('.pokemon-list').addEventListener('click', () => {
+      loadDetails(pokemon).then(function(){
+        showModal(pokemon.name, pokemon.height, pokemon.imageUrl); //,pokemon.types just shows as 'object', why?
+      })
+    });  
   }
 
 return {
