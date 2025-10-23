@@ -123,7 +123,7 @@ let pokemonRepository = (function() { //IIFE
   function showDetails(pokemon){
     document.querySelector('.pokemon-list').addEventListener('click', () => {
       loadDetails(pokemon).then(function(){
-        showModal(pokemon.name, pokemon.height, pokemon.imageUrl); //,pokemon.types just shows as 'object', why?
+        showModal(pokemon.name, 'Height:'+pokemon.height, pokemon.imageUrl); //,pokemon.types just shows as 'object', why?
       })
     });  
   }
