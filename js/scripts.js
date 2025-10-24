@@ -60,13 +60,13 @@ let pokemonRepository = (function() { //IIFE
       // Now the details get added to the items
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = details.types;
+      item.types = details.types[0].type.name;
     }).catch(function (e){
       console.error(e);
     });
   }
 
-   function showModal(title, text, img) {
+   function showModal(title, text, img, type) {
     let pokedexContainer = document.querySelector('#pokedex-container');
     pokedexContainer.innerHTML = '';
     
@@ -87,15 +87,15 @@ let pokemonRepository = (function() { //IIFE
    let imageElement = document.createElement('img');
     imageElement.src = img;
 
-  //  let typeElement = document.createElement('p');
-  //  typeElement.innerText = text;
+    let typeElement = document.createElement('p');
+    typeElement.innerText = type;
   
 
     pokedex.appendChild(closeButtonElement);
     pokedex.appendChild(titleElement);
     pokedex.appendChild(textElement);
     pokedex.appendChild(imageElement);
-    // pokedex.appendChild(typeElement);
+    pokedex.appendChild(typeElement);
     pokedexContainer.appendChild(pokedex);
     
     pokedexContainer.classList.add('is-visible');
@@ -123,7 +123,7 @@ let pokemonRepository = (function() { //IIFE
   function showDetails(pokemon){
     document.querySelector('.pokemon-list').addEventListener('click', () => {
       loadDetails(pokemon).then(function(){
-        showModal(pokemon.name, 'Height:'+pokemon.height, pokemon.imageUrl); //,pokemon.types just shows as 'object', why?
+        showModal(pokemon.name, 'Height: '+pokemon.height, pokemon.imageUrl, 'Type: '+pokemon.types); //,pokemon.types just shows as 'object', why?
       })
     });  
   }
