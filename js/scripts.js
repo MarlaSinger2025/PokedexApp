@@ -25,6 +25,8 @@ let pokemonRepository = (function() { //IIFE
       let button = document.createElement('button');
       button.innerText = pokemon.name;
       button.classList.add('pokemon-button');
+      button.setAttribute("data-toggle", "modal");
+      button.setAttribute("data-target" , "#pokemonModal");
       listItem.classList.add('pokemon-list');
       listItem.appendChild(button);
       listPokemon.appendChild(listItem);
@@ -32,9 +34,9 @@ let pokemonRepository = (function() { //IIFE
       button.addEventListener('click', function(event){showDetails(pokemon);
       });
     }
-    // Logs every pokemon that gets clicked in the function
+    // Logs every pokemon that gets clicked in the function - Do I still need this?
    // function showDetails(pokemon){
-     // console.log(pokemon); }
+  // console.log(pokemon); }
 
   // Fetches data from the pokemonAPI, adds each pokemon to the pokemonList
   function loadList(){
@@ -69,7 +71,6 @@ let pokemonRepository = (function() { //IIFE
   }
 
   function showModal(item){
-    let pokedexContainer = document.querySelector("#pokemonModal");
     let modalBody = $(".modal-body");
     let modalTitle = $(".modal-title");
 
@@ -79,14 +80,13 @@ let pokemonRepository = (function() { //IIFE
     let namePokemon = $("<h1>" + item.name + "</h1>");
     let imagePokemon = $('<img class="modal-img" style="width:60%">');
     imagePokemon.attr("src", item.imageUrl);
-    let heightPokemon = $("<p>" + "height : " + (item.height * 0.1) + " meters" + "</p>");
+    let heightPokemon = $("<p>" + "height : " + (item.height / 10 ) + " meters" + "</p>");
     let typesPokemon = $("<p>" + "type : " + item.types + "</p>");
 
     modalTitle.append(namePokemon);
     modalBody.append(imagePokemon);
     modalBody.append(heightPokemon);
     modalBody.append(typesPokemon);
-    pokedexContainer.append(modalBody);
 
      $("#pokemonModal").modal("show");
   }
