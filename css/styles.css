@@ -6,8 +6,8 @@ body{
 list-style-type: none;
 padding-inline-start: 0px;
 text-align: center;
-display: grid;
-grid-column: 1;
+/* grid-column: 1; 
+display: grid;*/
 }
 
 .pokemon-button{
@@ -28,6 +28,16 @@ grid-column: 1;
     border: 3px solid #ffcb05;
 }
 
+.container {
+  margin-top: 60px;
+}
+
+.modal-content {
+text-align: center;
+}
+
+/* CAN I DELETE ALL POKEDEX STYLE BECAUSE ITS REDUNDENT?
+
 #pokedex-container {
   display: none;
 }
@@ -43,21 +53,20 @@ grid-column: 1;
   background: rgba(0, 0, 0, 0.5);
   
   /* to show it above other content */
-  z-index: 999; 
+  /* z-index: 999;  */
   
   /* to allow scrolling if the screen is not high enough*/
-  overflow: auto; 
+  /* overflow: auto;  */
   
   /* this is used to center the modal = renemand to pokedex */
-  display: grid;
+  /* display: grid;
   text-align: center;
-}
-
+}/* 
 .pokedex {
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
-  background: #fff;
+  background: #ff0000;
   padding: 15px;
   width: 100%;
   max-width: 500px;
@@ -67,14 +76,16 @@ grid-column: 1;
 .pokedex-close {
   float: right;
   /* -webkit-appearance: none; */
-  border: 0;
+  /* border: 0;
   background: none;
   color: #777;
   text-decoration: underline;
-}
+} */
 
 h1 {
 font-family: Helvetica, Arial, sans-serif;
 color: #c7a008; /* original pokemon logo color */
-text-align: center;
+font-size: larger;
+
 }
+
