@@ -1,5 +1,5 @@
 body{
-  background-color: #3c5aa6; /* original pokemon logo color */
+  background-color: #7591d8; 
 }
 
 .pokemon-list{
@@ -11,7 +11,7 @@ display: grid;*/
 }
 
 .pokemon-button{
-    background-color: #80a4ff;
+    background-color: #3c5aa6; /* original pokemon logo color */
     border: none;
     color: white;
     padding: 10px;
@@ -23,13 +23,13 @@ display: grid;*/
 }
 
 .pokemon-button:hover {
-    background-color: #80a4ff;
+    /* background-color: #80a4ff; */
     font-weight: bold;
     border: 3px solid #ffcb05;
 }
 
 .container {
-  margin-top: 60px;
+  margin-top: 75px;
 }
 
 .modal-content {
@@ -85,7 +85,8 @@ text-align: center;
 h1 {
 font-family: Helvetica, Arial, sans-serif;
 color: #c7a008; /* original pokemon logo color */
-font-size: larger;
+font-size: 2rem;
+display: inline;
 
 }
 
