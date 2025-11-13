@@ -2,7 +2,8 @@ let pokemonRepository = (function() { //IIFE
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=50';
 
-  function add(item) {
+  function add(item) { //Do i need this code? There is nothing being added --ever .. ?
+
         const requiredKeys = ['name'] //defining required keys. Adding "detailsUrl" as key later
         if (
     // only if content is an object and contains requierd key(s) it can be added to the List
@@ -24,6 +25,7 @@ let pokemonRepository = (function() { //IIFE
       let button = document.createElement('button');
       button.innerText = pokemon.name;
       button.classList.add('pokemon-button');
+      listItem.classList.add('pokemon-list');
       listItem.appendChild(button);
       listPokemon.appendChild(listItem);
       // Everytime one of the pokemons gets clicked it will call the function
@@ -66,67 +68,34 @@ let pokemonRepository = (function() { //IIFE
     });
   }
 
-   function showModal(title, text, img, type) {
-    let pokedexContainer = document.querySelector('#pokedex-container');
-    pokedexContainer.innerHTML = '';
-    
-    let pokedex = document.createElement('div');
-    pokedex.classList.add('pokedex');
-    
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('pokedex-close');
-    closeButtonElement.innerText = 'X';
-  closeButtonElement.addEventListener('click', hideModal);
+  function showModal(item){
+    let pokedexContainer = document.querySelector("#pokemonModal");
+    let modalBody = $(".modal-body");
+    let modalTitle = $(".modal-title");
 
-    let titleElement = document.createElement('h1');
-    titleElement.innerText = title;
-    
-    let textElement = document.createElement('p');
-    textElement.innerText = text;
+    modalTitle.empty(); //clears existing content of the modal
+    modalBody.empty();
 
-   let imageElement = document.createElement('img');
-    imageElement.src = img;
+    let namePokemon = $("<h1>" + item.name + "</h1>");
+    let imagePokemon = $('<img class="modal-img" style="width:60%">');
+    imagePokemon.attr("src", item.imageUrl);
+    let heightPokemon = $("<p>" + "height : " + (item.height * 0.1) + " meters" + "</p>");
+    let typesPokemon = $("<p>" + "type : " + item.types + "</p>");
 
-    let typeElement = document.createElement('p');
-    typeElement.innerText = type;
-  
+    modalTitle.append(namePokemon);
+    modalBody.append(imagePokemon);
+    modalBody.append(heightPokemon);
+    modalBody.append(typesPokemon);
+    pokedexContainer.append(modalBody);
 
-    pokedex.appendChild(closeButtonElement);
-    pokedex.appendChild(titleElement);
-    pokedex.appendChild(textElement);
-    pokedex.appendChild(imageElement);
-    pokedex.appendChild(typeElement);
-    pokedexContainer.appendChild(pokedex);
-    
-    pokedexContainer.classList.add('is-visible');
-    
-    pokedexContainer.addEventListener('click', (e) => {
-      let target = e.target;
-      if (target === pokedexContainer ) {
-        hideModal();
-      }
-    });
+     $("#pokemonModal").modal("show");
   }
-  
-  function hideModal(){
-    let pokedexContainer = document.querySelector('#pokedex-container');
-    pokedexContainer.classList.remove('is-visible');
-  }
-  
-  window.addEventListener('keydown', (e) => {
-    let pokedexContainer = document.querySelector('#pokedex-container');
-    if (e.key === 'Escape' && pokedexContainer.classList.contains('is-visible')){
-      hideModal();
-    }
-  });
   
   function showDetails(pokemon){
-    document.querySelector('.pokemon-list').addEventListener('click', () => {
-      loadDetails(pokemon).then(function(){
-        showModal(pokemon.name, 'Height: '+pokemon.height, pokemon.imageUrl, 'Type: '+pokemon.types); //,pokemon.types just shows as 'object', why?
-      })
-    });  
-  }
+  loadDetails(pokemon).then(function(){
+    showModal(pokemon);
+  });
+}
 
 return {
 
