@@ -1,3 +1,9 @@
+
+:root {
+  --PokemonBlue: #3c5aa6;
+  --PokemonYellow: #c7a008;
+}
+
 body{
   background-color: #7591d8; 
 }
@@ -11,7 +17,7 @@ display: grid;*/
 }
 
 .pokemon-button{
-    background-color: #3c5aa6; /* original pokemon logo color */
+    background-color: var(--PokemonBlue); /* original pokemon logo color */
     border: none;
     color: white;
     padding: 10px;
@@ -29,11 +35,15 @@ display: grid;*/
 }
 
 .container {
-  margin-top: 75px;
+  margin-top: 2rem;
 }
 
 .modal-content {
 text-align: center;
+}
+
+.btn:hover {
+  background-color: var(--PokemonYellow);
 }
 
 /* CAN I DELETE ALL POKEDEX STYLE BECAUSE ITS REDUNDENT?
