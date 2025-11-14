@@ -11,15 +11,16 @@
   </head>
   <body>
     <!-- navigation bar with Logo, Title and Search box-->
-    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark justify-content-between">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light justify-content-between">
       <a class="navbar-brand" href="#">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" width="80" height="35"  class="d-inline-block align-top" alt="Pokemon Logo">
+        <img src="img/International_Pokémon_logo.svg.png" width="150" height="auto"  class="d-inline-block align-top" alt="Pokemon Logo">
         <h1>: Pokédex</h1></a>
          <form class="form-inline" id="pokemon-search-form">
           <input id="pokemon-search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light my-sm-0" data-toggle="modal" data-target="#pokemonModal" type="submit">Search</button>
+            <button class="btn btn-outline-light my-sm-0" type="submit">Search</button>
          </form>
     </nav>
+    <!-- pokemon List container -->
     <div class="container">
       <ul class="row list-group pokemon-list">
       </ul>
