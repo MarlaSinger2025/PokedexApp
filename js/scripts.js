@@ -1,6 +1,6 @@
 let pokemonRepository = (function() { //IIFE
     let pokemonList = [];
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=50';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   function add(item) { //Do i need this code? There is nothing being added --ever .. ?
 
@@ -25,8 +25,8 @@ let pokemonRepository = (function() { //IIFE
       let button = document.createElement('button');
       button.innerText = pokemon.name;
       button.classList.add('pokemon-button');
-      button.setAttribute("data-toggle", "modal");
-      button.setAttribute("data-target" , "#pokemonModal");
+      // button.setAttribute("data-toggle", "modal");
+      // button.setAttribute("data-target" , "#pokemonModal");
       listItem.classList.add('pokemon-list');
       listItem.appendChild(button);
       listPokemon.appendChild(listItem);
@@ -64,7 +64,7 @@ let pokemonRepository = (function() { //IIFE
       // Now the details get added to the items
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = details.types[0].type.name;
+      item.types = details.types;
     }).catch(function (e){
       console.error(e);
     });
@@ -81,7 +81,7 @@ let pokemonRepository = (function() { //IIFE
     let imagePokemon = $('<img class="modal-img" style="width:60%">');
     imagePokemon.attr("src", item.imageUrl);
     let heightPokemon = $("<p>" + "height : " + (item.height / 10 ) + " meters" + "</p>");
-    let typesPokemon = $("<p>" + "type : " + item.types + "</p>");
+    let typesPokemon = $("<p>" + "type : " + item.types.map(t => t.type.name).join(', ')+ "</p>");
 
     modalTitle.append(namePokemon);
     modalBody.append(imagePokemon);
@@ -97,6 +97,11 @@ let pokemonRepository = (function() { //IIFE
   });
 }
 
+  function searchForPokemon(name) {
+    return pokemonList.filter(p => p.name.toLowerCase().includes(name.toLowerCase())
+  );
+  }
+
 return {
 
     getAll : getAll,
@@ -104,8 +109,25 @@ return {
     loadList : loadList,
     loadDetails : loadDetails,
     showDetails : showDetails,
+    searchForPokemon : searchForPokemon,
   };
-})();
+})(); // End of IIFE
+
+// Function for filtering List of Pokemon by name
+$(document).ready(function () {
+  $('#pokemon-search-form').on('submit',function (e) {
+    e.preventDefault();
+
+    let name = $('#pokemon-search-form input[type="search"]').val().trim().toLowerCase();
+    let filteredPokemon = pokemonRepository.searchForPokemon(name);
+
+    $('.pokemon-list').empty();
+    filteredPokemon.forEach(function (pokemon) {
+      pokemonRepository.addListItem(pokemon);
+    });
+  });
+});
+
 
 //accessing pokemonList with the getAll() function because its hidden inside the pokemonRepository
 pokemonRepository.loadList().then(function() {
