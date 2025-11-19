@@ -1,7 +1,7 @@
 
 :root {
-  --PokemonBlue: #3c5aa6;
-  --PokemonYellow: #c7a008;
+  --PokemonBlue: #3c5aa6; /* original pokemon logo color */
+  --PokemonYellow: #c7a008; /* original pokemon logo color */
 }
 
 body{
@@ -12,19 +12,16 @@ body{
 list-style-type: none;
 padding-inline-start: 0px;
 text-align: center;
-/* grid-column: 1; 
-display: grid;*/
 }
 
 .pokemon-button{
-    background-color: var(--PokemonBlue); /* original pokemon logo color */
+    background-color: var(--PokemonBlue); 
     border: none;
     color: white;
     padding: 10px;
     border-radius: 10px;
-    cursor: crosshair;
     margin: 5px;
-    width: 20%; /* FINDE HERAUS WELCHE GRÖSSE DIE TABELLE HABEN MUSS*/
+    width: 20%;
     min-width: fit-content ;
 }
 
@@ -35,7 +32,8 @@ display: grid;*/
 }
 
 .container {
-  margin-top: 2rem;
+  margin-top: 70px;
+  padding-top: 10px;
 }
 
 .modal-content {
@@ -94,9 +92,20 @@ text-align: center;
 
 h1 {
 font-family: Helvetica, Arial, sans-serif;
-color: #c7a008; /* original pokemon logo color */
+color: var(--PokemonYellow);
 font-size: 2rem;
 display: inline;
 
 }
 
+@media screen and (min-width:576px) and (max-width: 618px) {
+  .container {
+  padding-top: 45px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .container {
+    padding-top: 80px;
+  }
+}
