@@ -26,7 +26,6 @@ text-align: center;
 }
 
 .pokemon-button:hover {
-    /* background-color: #80a4ff; */
     font-weight: bold;
     border: 3px solid #ffcb05;
 }
