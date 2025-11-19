@@ -32,3 +32,4 @@ Tools & Libraries
 ##Getting started
 
 To run this app go to : 
+https://marlasinger2025.github.io/PokedexApp/
