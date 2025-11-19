@@ -1,4 +1,4 @@
-##Pokemon Pokedex App
+##Pokemon Pokedex App##
 
 **Repository**
 
@@ -29,7 +29,7 @@ Tools & Libraries
     - Navbar Search button is styled with custom color.
 
 
-##Getting started
+##Getting started##
 
 To run this app go to : 
 https://marlasinger2025.github.io/PokedexApp/
