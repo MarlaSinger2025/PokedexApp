@@ -44,52 +44,6 @@ text-align: center;
   background-color: var(--PokemonYellow);
 }
 
-/* CAN I DELETE ALL POKEDEX STYLE BECAUSE ITS REDUNDENT?
-
-#pokedex-container {
-  display: none;
-}
-
-#pokedex-container.is-visible {
-  position: fixed;
-  padding: 20px;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  
-  /* to show it above other content */
-  /* z-index: 999;  */
-  
-  /* to allow scrolling if the screen is not high enough*/
-  /* overflow: auto;  */
-  
-  /* this is used to center the modal = renemand to pokedex */
-  /* display: grid;
-  text-align: center;
-}/* 
-.pokedex {
-  margin: auto;
-  display: inline-block;
-  box-sizing: border-box;
-  background: #ff0000;
-  padding: 15px;
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
-}
-
-.pokedex-close {
-  float: right;
-  /* -webkit-appearance: none; */
-  /* border: 0;
-  background: none;
-  color: #777;
-  text-decoration: underline;
-} */
-
 h1 {
 font-family: Helvetica, Arial, sans-serif;
 color: var(--PokemonYellow);
