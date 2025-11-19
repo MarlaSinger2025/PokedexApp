@@ -6,7 +6,7 @@ A responsive, interactive Pokémon index built with JavaScript and Bootstrap 4 t
 **Technologies:**
 
 - HTML5 — Structuring the webpage and content.
-- CSS3 & Bootstrap 4 — Styling and responsive design, including grid and component styles.
+- CSS3 & Bootstrap 4.3.1 — Styling and responsive design, including grid and component styles.
 - JavaScript (ES6) — All interactivity, data fetching, rendering, and event handling.
 - jQuery 3.3.1 — Simplified DOM manipulation and event handling.-
 - Bootstrap
@@ -14,7 +14,7 @@ A responsive, interactive Pokémon index built with JavaScript and Bootstrap 4 t
 
 API & Data
 
-- PokéAPI — Public RESTful API used for fetching Pokémon data such as names, images, heights, weights, and types.
+- PokéAPI — https://pokeapi.co/ - Public API used for fetching Pokémon data such as names, images, heights, and types.
 
 Tools & Libraries
 - Fetch API — To make HTTP requests to PokéAPI for data.
@@ -22,15 +22,14 @@ Tools & Libraries
 
 **Features:**
 
-- Pokémon Listing: Fetches and displays the first 150 Pokémon with images, names, height, weight, and types.
+- Pokémon Listing: Fetches and displays the first 150 Pokémon with images, names, height, and types.
 - Search: Filter Pokémon by name dynamically without page reload.
-- Details Modal: Click on a Pokémon card to view detailed info in a Bootstrap modal.
+- Details Modal: Click on a Pokémon button to view detailed info in a Bootstrap modal.
 - Responsive Layout: Uses Bootstrap’s grid system for consistent layout across devices.
 - Loading Indicator: Shows a loading message while fetching data asynchronously.
 - Custom UI Enhancements:
-    - Styled Home button with a custom blue color and icon.
     - Navbar with drop shadow for a subtle elevation effect.
-    - Search and Home buttons are styled with custom colors.
+    - Search button is styled with custom colors.
     - Type Color Badges on Pokémon Cards
 
          - **Single-type Pokémon:** The badge is a solid color matching that Pokémon’s type.
