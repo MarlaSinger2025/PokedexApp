@@ -25,8 +25,6 @@ let pokemonRepository = (function() { //IIFE
       let button = document.createElement('button');
       button.innerText = pokemon.name;
       button.classList.add('pokemon-button');
-      // button.setAttribute("data-toggle", "modal");
-      // button.setAttribute("data-target" , "#pokemonModal");
       listItem.classList.add('pokemon-list');
       listItem.appendChild(button);
       listPokemon.appendChild(listItem);
