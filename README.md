@@ -1,15 +1,15 @@
-**Pokemon Pokedex App**
+##Pokemon Pokedex App
+
 **Repository**
 
-A responsive, interactive Pokémon index built with JavaScript and Bootstrap 4 that fetches Pokémon data from the PokéAPI, displays it in cards, supports search functionality, and shows detailed info modals.
+A responsive, interactive Pokémon index built with JavaScript and Bootstrap 4 that fetches Pokémon data from the PokéAPI, displays the names of the pokemon in buttons, supports search functionality, and shows detailed information about the pokemon in modals.
 
 **Technologies:**
 
 - HTML5 — Structuring the webpage and content.
-- CSS3 & Bootstrap 4.3.1 — Styling and responsive design, including grid and component styles.
+- CSS3 & Bootstrap 4.3.1 — Styling and responsive design.
 - JavaScript (ES6) — All interactivity, data fetching, rendering, and event handling.
-- jQuery 3.3.1 — Simplified DOM manipulation and event handling.-
-- Bootstrap
+- jQuery 3.3.1 — Simplified DOM manipulation and event handling.
 - Normalize.css — CSS reset to ensure consistent styling across browsers.
 
 API & Data
@@ -25,18 +25,10 @@ Tools & Libraries
 - Pokémon Listing: Fetches and displays the first 150 Pokémon with images, names, height, and types.
 - Search: Filter Pokémon by name dynamically without page reload.
 - Details Modal: Click on a Pokémon button to view detailed info in a Bootstrap modal.
-- Responsive Layout: Uses Bootstrap’s grid system for consistent layout across devices.
-- Loading Indicator: Shows a loading message while fetching data asynchronously.
 - Custom UI Enhancements:
-    - Navbar with drop shadow for a subtle elevation effect.
-    - Search button is styled with custom colors.
-    - Type Color Badges on Pokémon Cards
+    - Navbar Search button is styled with custom color.
 
-         - **Single-type Pokémon:** The badge is a solid color matching that Pokémon’s type.
-         - **Dual-type Pokémon:** The badge shows a left-to-right gradient split with the two respective colors side by side.
 
-        The colors are mapped from predefined type-to-color values (such as Fire = #EE8130, Water = #6390F0, etc.), aligned with the Pokémon API type names.
+##Getting started
 
-## Deployment
-
-To deploy this project run:
+To run this app go to : 
